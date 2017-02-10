@@ -9,34 +9,35 @@ function void egpDraw(){
     EGP:egpResolution(vec2(0,0),vec2(512,512))
     EGP:egpDrawTopLeft(1)
     
-    EGP:egpBox(1,vec2(0,0),vec2(512,512))
+    EGP:egpBox(1,vec2(0),vec2(512,512))
     EGP:egpColor(1,vec(100)) #Background
     
-    EGP:egpRoundedBox(2,vec2(0,0),vec2(512,99))
+    EGP:egpRoundedBox(2,vec2(0),vec2(512,100))
     EGP:egpColor(2,vec(140)) #Main
-
-    EGP:egpRoundedBox(3,vec2(0,100),vec2(255,100))
-    EGP:egpColor(3,vec(255)) #Button 1
     
-    EGP:egpCopy(4,3)
-    EGP:egpPos(4,vec2(0,201))
-    #EGP:egpColor(4,Color[5,vector]) #Button 2
+    for(I = 1,4){ #Button + Button text generator
+        #Button
+        EGP:egpRoundedBox(I+2,vec2(0,I*101),vec2(255,100))
+        EGP:egpColor(I+2,vec(200))
     
-    EGP:egpCopy(5,3)
-    EGP:egpPos(5,vec2(0,302))
-    #EGP:egpColor(5,Color[5,vector]) #Button 3
+        #Text
+        EGP:egpTextLayout(I+49,toString(I),vec2(-118,-40),vec2(235,80))
+        EGP:egpAlign(I+49,1,1)
+        EGP:egpColor(I+49,vec())
+        EGP:egpAlpha(I+49,100)
+        EGP:egpParent(I+49,I+2)
+        
+        #print(I)
+    }
     
-    EGP:egpCopy(6,3)
-    EGP:egpPos(6,vec2(0,403))
-    #EGP:egpColor(6,Color[5,vector]) #Button 4    
-    
-    EGP:egpRoundedBox(98,vec2(256,100),vec2(256,404))
+    EGP:egpRoundedBox(98,vec2(256,101),vec2(256,404))
     EGP:egpColor(98,vec(240)) #Info-Screen 
 
     #EGP:egpCircle(150,vec2(-10,-10),vec2(3,3))
     #EGP:egpColor(150,vec(0))
     #EGP:egpParentToCursor(150)
      
+    #print(EGP:egp)
 }
 
 function number button(Num){
