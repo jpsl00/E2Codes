@@ -12,25 +12,25 @@ function void egpDraw(){
     EGP:egpBox(1,vec2(0,0),vec2(512,512))
     EGP:egpColor(1,vec(100)) #Background
     
-    EGP:egpBox(2,vec2(0,0),vec2(512,100))
+    EGP:egpBox(2,vec2(0,0),vec2(512,98))
     EGP:egpColor(2,vec(140)) #Main
 
-    EGP:egpBox(3,vec2(0,100),vec2(256,103))
+    EGP:egpRoundedBox(3,vec2(2,101),vec2(246,98))
     EGP:egpColor(3,vec(255)) #Button 1
     
     EGP:egpCopy(4,3)
-    EGP:egpPos(4,vec2(0,203))
+    EGP:egpPos(4,vec2(2,204))
     #EGP:egpColor(4,Color[5,vector]) #Button 2
     
     EGP:egpCopy(5,3)
-    EGP:egpPos(5,vec2(0,306))
+    EGP:egpPos(5,vec2(2,307))
     #EGP:egpColor(5,Color[5,vector]) #Button 3
     
     EGP:egpCopy(6,3)
-    EGP:egpPos(6,vec2(0,409))
+    EGP:egpPos(6,vec2(2,410))
     #EGP:egpColor(6,Color[5,vector]) #Button 4    
     
-    EGP:egpBox(98,vec2(256,100),vec2(256,412))
+    EGP:egpRoundedBox(98,vec2(250,100),vec2(260,408))
     EGP:egpColor(98,vec(240)) #Info-Screen 
 
     #EGP:egpCircle(150,vec2(-10,-10),vec2(3,3))
