@@ -1,47 +1,28 @@
 @name WIP Printer Holder
 @inputs EGP:wirelink User:entity 
 @outputs 
-@persist User:entity Cursor:vector2 A B C [State,X,Color]:array String:string
+@persist User:entity Cursor:vector2 A B C [State,X,Color,S]:array
 @autoupdate on
 
 function void egpDraw(){
+    S = array( #Strings dos botoes
+        "WIP Printer Holder",
+        "by jpsl00",
+        "Toggle Timer",
+        "Insta-Print",
+        "Chat Commands",
+        ""
+    ) 
+    
     EGP:egpClear()
     EGP:egpResolution(vec2(0),vec2(512))
     EGP:egpDrawTopLeft(1)
     
-    #EGP:egpBox(1,vec2(0),vec2(512,512))
-    #EGP:egpColor(1,vec(100)) #Background (used for screens)
+    EGP:egpBox(1,vec2(0),vec2(512,512))
+    EGP:egpColor(1,vec(100)) #Background (used for screens)
     
     EGP:egpRoundedBox(2,vec2(0),vec2(512,100))
     EGP:egpColor(2,vec(140)) #Main
-    
-    EGP:egpTextLayout(50,"PLACEHOLDER",vec2(-246,-40),vec2(492,50))
-    EGP:egpFont(50,"WireGPU_ConsoleFont",30)
-    EGP:egpAlign(50,1,1)
-    EGP:egpColor(50,vec())
-    EGP:egpAlpha(50,100)
-    EGP:egpParent(50,2)
-    
-    EGP:egpTextLayout(51,"PLACEHOLDER",vec2(-246,10),vec2(492,30))
-    EGP:egpFont(51,"WireGPU_ConsoleFont",20)
-    EGP:egpAlign(51,1,1)
-    EGP:egpColor(51,vec())
-    EGP:egpAlpha(51,100)
-    EGP:egpParent(51,2)
-    
-    for(I = 1,4){ #Button + Button text generator
-        #Button
-        EGP:egpRoundedBox(I+2,vec2(0,I*101),vec2(255,100))
-        EGP:egpColor(I+2,vec(200))
-    
-        #Text
-        EGP:egpTextLayout(I+51,"PLACEHOLDER",vec2(-118,-40),vec2(235,80))
-        EGP:egpFont(I+51,"WireGPU_ConsoleFont",20)
-        EGP:egpAlign(I+51,1,1)
-        EGP:egpColor(I+51,vec())
-        EGP:egpAlpha(I+51,100)
-        EGP:egpParent(I+51,I+2)
-    }
     
     EGP:egpRoundedBox(98,vec2(256,101),vec2(256,404))
     EGP:egpColor(98,vec(240)) #Info-Screen 
@@ -49,6 +30,34 @@ function void egpDraw(){
     EGP:egpCircle(150,vec2(-10,-10),vec2(3,3))
     EGP:egpColor(150,vec(0))
     EGP:egpParentToCursor(150)
+    
+    for(I = 1,6){ #Button + Button text generator
+        #Button
+        if(I >= 3){
+            EGP:egpRoundedBox(I,vec2(0,(I-2)*101),vec2(255,100))
+            EGP:egpColor(I,vec(200))
+        }
+    
+        #Text
+        if(I == 1){
+            EGP:egpTextLayout(I+49,S[I,string],vec2(-246,-45),vec2(492,50))
+            EGP:egpFont(I+49,"WireGPU_ConsoleFont",40)
+        }elseif(I == 2){
+            EGP:egpTextLayout(I+49,S[I,string],vec2(-246,5),vec2(492,30))
+            EGP:egpFont(I+49,"WireGPU_ConsoleFont",25)
+        }else{
+            EGP:egpTextLayout(I+49,S[I,string],vec2(-118,-40),vec2(235,80))
+            EGP:egpFont(I+49,"WireGPU_ConsoleFont",20)
+        }
+        EGP:egpAlign(I+49,1,1)
+        EGP:egpColor(I+49,vec())
+        EGP:egpAlpha(I+49,100)
+        if(I >= 1 & I <= 2){
+            EGP:egpParent(I+49,2)
+        }else{
+            EGP:egpParent(I+49,I)
+        }
+    }
 }
 
 function number button(Num){ #Function for buttons.
@@ -64,6 +73,12 @@ if(changed(EGP)){
 Cursor = EGP:egpCursor(User)
 
 if(button(3)){
-    EGP:egpSetText(50,"TESTE LINHA")
-    EGP:egpSetText(51,"TESTE LINHA")
+    A = !A
+    if(A){
+        #On state
+        
+    }else{
+        #Off state
+        
+    }
 }
